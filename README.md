@@ -9,4 +9,4 @@ Fields are checked with Regular Expressions (some values like phone number and z
 
 **ScreenShot:**
 
-![Alt tag](https://goo.gl/0nhl7b)
+![Alt tag](http://goo.gl/CJkg1V)
