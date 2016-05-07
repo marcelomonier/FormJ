@@ -14,10 +14,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 
-/**
- *
- * @author Jesus Daniel Cuesta fuentes
- */
 public class FormController implements Initializable {
 
     private Label label;
