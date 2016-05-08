@@ -277,7 +277,11 @@ public class FormController implements Initializable {
         tf.setStyle(cssCorrectField);
     }
 
-    // Method to write in log file.
+    /* Method to write in log file.
+    *
+    * @params level     level of the message.
+    * @params message   message to write in log file.
+    */
     private void writeInLogFile(Level level, String message) {
         logger.log(level, message);
     }
