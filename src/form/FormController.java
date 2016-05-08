@@ -1,7 +1,12 @@
 package form;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.FileHandler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 import javafx.event.ActionEvent;
@@ -14,6 +19,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 
+/**
+ *
+ * @author Jesus Daniel Cuesta fuentes
+ */
 public class FormController implements Initializable {
 
     private Label label;
@@ -40,7 +49,22 @@ public class FormController implements Initializable {
 
     String cssCorrectField, cssFieldError;
 
+    static final Logger logger = Logger.getLogger("logFile");
+    ;
+    FileHandler fh;
+
     public FormController() {
+        try {
+            // Setting the logger and setting format.
+            fh = new FileHandler("src/logs/logFile.log", true);
+            logger.addHandler(fh);
+            logger.setLevel(Level.ALL);
+            SimpleFormatter formatter = new SimpleFormatter();
+            fh.setFormatter(formatter);
+        } catch (SecurityException | IOException se) {
+            System.out.println("EXCEPTION: " + se);
+        }
+
         // Strings with CSS styles as value to apply to the form.
         this.cssCorrectField = "-fx-border-color: #1aaf5d; -fx-border-radius: 3;";
         this.cssFieldError = "-fx-border-color: #ef5350; -fx-border-radius: 3;";
@@ -116,7 +140,7 @@ public class FormController implements Initializable {
                 zipIncorrect();
             } else {
                 setCorrectFieldStyle(zipField);
-                submitForm();
+                submitForm(mailField.getText(), nameField.getText(), lastNameField.getText(), phoneField.getText(), birthdayField.getText(), zipField.getText());
             }
         } else {
             incorrectMailAlert();
@@ -140,6 +164,7 @@ public class FormController implements Initializable {
         alert.setHeaderText("There is empty fields!");
         alert.setContentText("You can't leave any empty field!");
         alert.show();
+        writeInLogFile(Level.WARNING, "empty fields.");
     }
 
     // Method to show an alert when e-mail is not correct.
@@ -148,6 +173,7 @@ public class FormController implements Initializable {
         alert.setContentText("You haven't entered a valid e-mail address.");
         alert.show();
         setIncorrectMailStyle();
+        writeInLogFile(Level.WARNING, "incorrect e-mail.");
     }
 
     // Method to show an alert when e-mails does not match.
@@ -156,6 +182,7 @@ public class FormController implements Initializable {
         alert.setContentText("Re-enter e-mail address.");
         alert.show();
         setIncorrectMailStyle();
+        writeInLogFile(Level.WARNING, "e-mail doesn't match.");
     }
 
     // Method to show an alert when name or last name is not correct.
@@ -164,6 +191,7 @@ public class FormController implements Initializable {
         alert.setContentText("You haven't entered a valid name or last name.");
         alert.show();
         setIncorrectNameStyle();
+        writeInLogFile(Level.WARNING, "name incorrect.");
     }
 
     // Method to show an alert when last name is not correct.
@@ -172,6 +200,7 @@ public class FormController implements Initializable {
         alert.setContentText("You haven't entered a valid last name.");
         alert.show();
         setIncorrectLastNameStyle();
+        writeInLogFile(Level.WARNING, "last name incorrect.");
     }
 
     // Method to show an alert when phone number is not correct.
@@ -180,6 +209,7 @@ public class FormController implements Initializable {
         alert.setContentText("You haven't entered a valid phone number.");
         alert.show();
         setIncorrectPhoneStyle();
+        writeInLogFile(Level.WARNING, "phone incorrect.");
     }
 
     // Method to show an alert when birthday is not correct.
@@ -188,6 +218,7 @@ public class FormController implements Initializable {
         alert.setContentText("Re-enter birthday date.");
         alert.show();
         setIncorrectBirthdayStyle();
+        writeInLogFile(Level.WARNING, "birthday incorrect.");
     }
 
     // Method to show an alert when zip is not correct.
@@ -196,14 +227,22 @@ public class FormController implements Initializable {
         alert.setContentText("You haven't entered a valid zip.");
         alert.show();
         setIncorrectZipStyle();
+        writeInLogFile(Level.WARNING, "zip incorrect.");
     }
-    
+
     // Method to show an alert when the form has been successfully submitted.
-    private void submitForm() {
+    private void submitForm(String mail, String name, String lastName, String phone, String birthday, String zip) {
         alert.setTitle("Congratulations!");
         alert.setHeaderText("Submitted form!");
         alert.setContentText("The form has been successfully submitted.");
         alert.show();
+        writeInLogFile(Level.INFO, "The form has been successfully submitted.\n"
+                + "MAIL: " + mail + "\n"
+                + "NAME: " + name + "\n"
+                + "LAST NAME: " + lastName + "\n"
+                + "PHONE: " + phone + "\n"
+                + "BIRTHDAY: " + birthday + "\n"
+                + "ZIP: " + zip + "\n");
     }
 
     // Method to set a CSS style when e-mail is not correct.
@@ -242,6 +281,11 @@ public class FormController implements Initializable {
         tf.setStyle(cssCorrectField);
     }
 
+    // Method to write in log file.
+    private void writeInLogFile(Level level, String message) {
+        logger.log(level, message);
+    }
+
     // Method to allow only letters when someone is typing a text in the field.
     public EventHandler<KeyEvent> letterValidation(final Integer maxLength) {
         return (KeyEvent e) -> {
@@ -259,7 +303,7 @@ public class FormController implements Initializable {
         return (KeyEvent e) -> {
             TextField txt_TextField = (TextField) e.getSource();
 
-            if (txt_TextField.getText().length() >= maxLength || !e.getCharacter().matches("[0-9 -]")) {
+            if (txt_TextField.getText().length() >= maxLength || !e.getCharacter().matches("[0-9]")) {
                 e.consume();
             }
         };

@@ -1,0 +1,11 @@
+May 08, 2016 1:01:19 PM form.FormController writeInLogFile
+WARNING: empty fields.
+May 08, 2016 1:10:36 PM form.FormController writeInLogFile
+INFO: The form has been successfully submitted.
+MAIL: mail@domain.com
+NAME: Name
+LAST NAME: Last Name
+PHONE: 600600600
+BIRTHDAY: 05/02/1995
+ZIP: 04570
+
