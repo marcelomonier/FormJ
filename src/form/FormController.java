@@ -46,11 +46,15 @@ public class FormController implements Initializable {
         this.cssFieldError = "-fx-border-color: #ef5350; -fx-border-radius: 3;";
 
         // Initializing regular expressions to check the fields.
+        // Regular expression to name and last name allowing spanish characters.
         this.checkName = Pattern.compile("^([A-Za-z ñáéíóúÑÁÉÍÓÚ']{2,25})$");
+        // Regular expression to e-mail address.
         this.checkMail = Pattern.compile("^[_A-Za-z0-9]+([_A-Za-z0-9]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,6})$");
         // Regular expression to spanish number phone.
         this.checkPhone = Pattern.compile("^[9|6|7][0-9]{8}");
+        // Regular expression to date with format dd/mm/yyyy.
         this.checkDate = Pattern.compile("^\\d{1,2}/\\d{1,2}/\\d{4}$");
+        // Regular expression to spanish zip.
         this.checkZip = Pattern.compile("^(0[1-9]|[1-4][0-9]|5[0-2])[0-9]{3}$");
     }
 
