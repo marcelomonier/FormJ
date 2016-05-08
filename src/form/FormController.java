@@ -87,6 +87,7 @@ public class FormController implements Initializable {
         nameField.addEventFilter(KeyEvent.KEY_TYPED, letterValidation(25));
         lastNameField.addEventFilter(KeyEvent.KEY_TYPED, letterValidation(25));
         phoneField.addEventFilter(KeyEvent.KEY_TYPED, numberValidation(9));
+        zipField.addEventFilter(KeyEvent.KEY_TYPED, numberValidation(5));
     }
 
     // Send form method
