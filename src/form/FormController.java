@@ -105,35 +105,21 @@ public class FormController implements Initializable {
         } else if (checkRegEx(checkMail, mailField.getText())) {
             if (!mailField.getText().equals(mailRepeatField.getText())) {
                 mailDoesNotMatch();
-            } else {
+            } else if (!checkRegEx(checkName, nameField.getText())) {
                 setCorrectFieldStyle(mailField);
                 setCorrectFieldStyle(mailRepeatField);
-            }
-
-            if (!checkRegEx(checkName, nameField.getText())) {
                 nameIncorrect();
-            } else {
+            } else if (!checkRegEx(checkName, lastNameField.getText())) {
                 setCorrectFieldStyle(nameField);
-            }
-
-            if (!checkRegEx(checkName, lastNameField.getText())) {
                 lastNameIncorrect();
-            } else {
+            } else if (!checkRegEx(checkPhone, phoneField.getText())) {
                 setCorrectFieldStyle(lastNameField);
-            }
-            if (!checkRegEx(checkPhone, phoneField.getText())) {
                 phoneIncorrect();
-            } else {
+            } else if (!checkRegEx(checkDate, birthdayField.getText())) {
                 setCorrectFieldStyle(phoneField);
-            }
-
-            if (!checkRegEx(checkDate, birthdayField.getText())) {
                 birthdayIncorrect();
-            } else {
+            } else if (!checkRegEx(checkZip, zipField.getText())) {
                 setCorrectFieldStyle(birthdayField);
-            }
-
-            if (!checkRegEx(checkZip, zipField.getText())) {
                 zipIncorrect();
             } else {
                 setCorrectFieldStyle(zipField);
