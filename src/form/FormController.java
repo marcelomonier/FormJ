@@ -149,6 +149,28 @@ public class FormController implements Initializable {
         alert.show();
         writeInLogFile(Level.WARNING, "empty fields.");
     }
+    
+    //Method to set style to empty fields.
+    private void emptyFieldsStyle() {
+        if (mailField.getText().trim().isEmpty() || mailRepeatField.getText().trim().isEmpty()) {
+            setIncorrectMailStyle();
+        }
+        if (nameField.getText().trim().isEmpty()) {
+            setIncorrectNameStyle();
+        }
+        if (lastNameField.getText().trim().isEmpty()) {
+            setIncorrectLastNameStyle();
+        }
+        if (phoneField.getText().trim().isEmpty()) {
+            setIncorrectPhoneStyle();
+        }
+        if (birthdayField.getText().trim().isEmpty()) {
+            setIncorrectBirthdayStyle();
+        }
+        if (zipField.getText().trim().isEmpty()) {
+            setIncorrectZipStyle();
+        }
+    }
 
     // Method to show an alert when e-mail is not correct.
     private void incorrectMailAlert() {
