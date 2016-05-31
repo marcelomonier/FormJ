@@ -147,6 +147,7 @@ public class FormController implements Initializable {
         alert.setHeaderText("There is empty fields!");
         alert.setContentText("You can't leave any empty field!");
         alert.show();
+        emptyFieldsStyle();
         writeInLogFile(Level.WARNING, "empty fields.");
     }
     
