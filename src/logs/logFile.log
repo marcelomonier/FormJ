@@ -9,3 +9,48 @@ PHONE: 600600600
 BIRTHDAY: 05/02/1995
 ZIP: 04570
 
+Apr 18, 2018 6:22:44 PM form.FormController writeInLogFile
+WARNING: empty fields.
+Apr 18, 2018 6:23:32 PM form.FormController writeInLogFile
+WARNING: birthday incorrect.
+Apr 18, 2018 6:23:40 PM form.FormController writeInLogFile
+WARNING: zip incorrect.
+Apr 18, 2018 6:24:45 PM form.FormController writeInLogFile
+INFO: The form has been successfully submitted.
+MAIL: marcelomonier@gmail.com
+NAME: Marcelo
+LAST NAME: Monier
+PHONE: 999015066
+BIRTHDAY: 10/01/1986
+ZIP: 32003
+
+Apr 18, 2018 6:32:56 PM form.FormController writeInLogFile
+WARNING: phone incorrect.
+Apr 18, 2018 6:33:09 PM form.FormController writeInLogFile
+WARNING: zip incorrect.
+Apr 18, 2018 6:33:18 PM form.FormController writeInLogFile
+WARNING: phone incorrect.
+Apr 18, 2018 6:37:53 PM form.FormController writeInLogFile
+WARNING: Telefone icorreto.
+Apr 18, 2018 6:38:00 PM form.FormController writeInLogFile
+WARNING: CEP incorreto
+Apr 18, 2018 6:38:09 PM form.FormController writeInLogFile
+INFO: The form has been successfully submitted.
+MAIL: marcelomonier@gmail.com
+NAME: Marcelo
+LAST NAME: Monier
+PHONE: 999015066
+BIRTHDAY: 10/01/1986
+ZIP: 32003
+
+Apr 18, 2018 6:38:17 PM form.FormController writeInLogFile
+WARNING: Telefone icorreto.
+Apr 18, 2018 6:38:22 PM form.FormController writeInLogFile
+INFO: The form has been successfully submitted.
+MAIL: marcelomonier@gmail.com
+NAME: Marcelo
+LAST NAME: Monier
+PHONE: 999015066
+BIRTHDAY: 10/01/1986
+ZIP: 32003
+

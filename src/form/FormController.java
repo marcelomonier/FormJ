@@ -46,7 +46,7 @@ public class FormController implements Initializable {
     String cssCorrectField, cssFieldError;
 
     static final Logger logger = Logger.getLogger("logFile");
-    ;
+    
     FileHandler fh;
 
     public FormController() {
@@ -86,8 +86,8 @@ public class FormController implements Initializable {
         // Name and last name fields only accepts letters as text input.
         nameField.addEventFilter(KeyEvent.KEY_TYPED, letterValidation(25));
         lastNameField.addEventFilter(KeyEvent.KEY_TYPED, letterValidation(25));
-        phoneField.addEventFilter(KeyEvent.KEY_TYPED, numberValidation(9));
-        zipField.addEventFilter(KeyEvent.KEY_TYPED, numberValidation(5));
+        phoneField.addEventFilter(KeyEvent.KEY_TYPED, numberValidation(11));
+        zipField.addEventFilter(KeyEvent.KEY_TYPED, numberValidation(8));
     }
 
     // Send form method
@@ -175,11 +175,11 @@ public class FormController implements Initializable {
 
     // Method to show an alert when e-mail is not correct.
     private void incorrectMailAlert() {
-        alert.setHeaderText("Incorrect e-mail address.");
-        alert.setContentText("You haven't entered a valid e-mail address.");
+        alert.setHeaderText("Endereço de email incorreto");
+        alert.setContentText("Entre com um endereço de email válido");
         alert.show();
         setIncorrectMailStyle();
-        writeInLogFile(Level.WARNING, "incorrect e-mail.");
+        writeInLogFile(Level.WARNING, "Email incorreto.");
     }
 
     // Method to show an alert when e-mails does not match.
@@ -211,11 +211,11 @@ public class FormController implements Initializable {
 
     // Method to show an alert when phone number is not correct.
     private void phoneIncorrect() {
-        alert.setHeaderText("Incorrect phone number");
-        alert.setContentText("You haven't entered a valid phone number.");
+        alert.setHeaderText("Número de telefone incorreto");
+        alert.setContentText("Digite um telefone válido.");
         alert.show();
         setIncorrectPhoneStyle();
-        writeInLogFile(Level.WARNING, "phone incorrect.");
+        writeInLogFile(Level.WARNING, "Telefone icorreto.");
     }
 
     // Method to show an alert when birthday is not correct.
@@ -229,11 +229,11 @@ public class FormController implements Initializable {
 
     // Method to show an alert when zip is not correct.
     private void zipIncorrect() {
-        alert.setHeaderText("Incorrect ZIP");
-        alert.setContentText("You haven't entered a valid zip.");
+        alert.setHeaderText("CEP inválido");
+        alert.setContentText("Digite um CEP válido.");
         alert.show();
         setIncorrectZipStyle();
-        writeInLogFile(Level.WARNING, "zip incorrect.");
+        writeInLogFile(Level.WARNING, "CEP incorreto");
     }
 
     // Method to show an alert when the form has been successfully submitted.
